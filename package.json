@@ -22,15 +22,19 @@
 		"commands": [
 			{
 				"command": "f7.BlankPageSingle",
-				"title": "Framework7: Init Blank Page Single"
+				"title": "Framework7: New Project Single Page (Windows)"
+			},
+			{
+				"command": "f7.BlankPageSingleLinux",
+				"title": "Framework7: New Project Single Page (Linux/Mac)"
 			},
 			{
 				"command": "f7.Preview",
-				"title": "Framework7: Preview UI"
+				"title": "Framework7: Open Preview in Panel"
 			},
 			{
 				"command": "f7.PreviewBrowser",
-				"title": "Framework7: Preview UI in Browser"
+				"title": "Framework7: Open Preview in Browser"
 			}
 		]
 	},
