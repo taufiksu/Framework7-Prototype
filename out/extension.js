@@ -35,7 +35,7 @@ function activate(context) {
         terminal.sendText('powershell -command "& { iwr https://gist.github.com/taufiksu/51b474cbafe41ee6cfb2531852018a1c/raw/987d5e0a28216201967197d5792b1fcc27248ac3/404.html -OutFile 404.html }"', true);
         terminal.sendText("cd ..", true);
         // Downloading Index
-        terminal.sendText('powershell -command "& { iwr https://gist.github.com/taufiksu/ebef8e3a137e003db3fcb44c92c8254b/raw/afbcab1ef5b01b5c3531995c8e6e5e4119a3dfc0/index.html -OutFile index.html }"', true);
+        terminal.sendText('powershell -command "& { iwr https://gist.github.com/taufiksu/ebef8e3a137e003db3fcb44c92c8254b/raw/8b17d094e0bf884e69470a481ec1bd138fd7b3b3/index.html -OutFile index.html }"', true);
     }));
     context.subscriptions.push(vscode.commands.registerCommand("f7.Preview", () => {
         const terminal = vscode.window.createTerminal("F7 Server", process.env.COMSPEC);
@@ -45,7 +45,17 @@ function activate(context) {
             const panel = vscode.window.createWebviewPanel("webview", "Framework7", vscode.ViewColumn.Two, {
                 enableScripts: true,
             });
-            panel.webview.html = provideContent();
+            // Show UI Panel
+            panel.webview.html = browserContent();
+            // Handle messages from the webview
+            panel.webview.onDidReceiveMessage((message) => {
+                switch (message.command) {
+                    case "reload":
+                        vscode.window.showInformationMessage(message.text);
+                        vscode.commands.executeCommand("workbench.action.webview.reloadWebviewAction");
+                        return;
+                }
+            }, undefined, context.subscriptions);
         }, 3000);
     }));
     context.subscriptions.push(vscode.commands.registerCommand("f7.PreviewBrowser", () => {
@@ -59,28 +69,128 @@ exports.activate = activate;
 // this method is called when your extension is deactivated
 function deactivate() { }
 exports.deactivate = deactivate;
-function provideContent() {
+function browserContent() {
     return `
-      <html>
-          <header>
-              <style>
-                  body, html, div {
-                      margin: 0;
-                      padding: 0;
-                      width: 100%;
-                      height: 100%;
-                      overflow: hidden;
-                      background-color: #fff;
-                  }
-              </style>
-          </header>
-          <body>
-              <div>
-                  <iframe src="http://127.0.0.1:7777" width="100%" height="100%" seamless frameborder=0>
-                  </iframe>
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+      <style>
+          body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #fff;
+          }
+
+          * {
+              box-sizing: border-box;
+          }
+
+          /* The browser window */
+          .container {
+              border: 3px solid #f1f1f1;
+              border-top-left-radius: 4px;
+              border-top-right-radius: 4px;
+          }
+
+          /* Container for columns and the top "toolbar" */
+          .row {
+              padding: 10px;
+              background: #f1f1f1;
+              border-top-left-radius: 4px;
+              border-top-right-radius: 4px;
+          }
+
+          /* Create three unequal columns that floats next to each other */
+          .column {
+              float: left;
+          }
+
+          .right {
+              width: 20%;
+          }
+
+          .middle {
+              width: 80%;
+          }
+
+          /* Clear floats after the columns */
+          .row:after {
+              content: "";
+              display: table;
+              clear: both;
+          }
+
+          /* Three dots */
+          .dot {
+              margin-top: 4px;
+              height: 12px;
+              width: 12px;
+              background-color: #bbb;
+              border-radius: 50%;
+              display: inline-block;
+          }
+
+          /* Style the input field */
+          input[type=text] {
+              width: 100%;
+              border-radius: 3px;
+              border: none;
+              background-color: white;
+              margin-top: -8px;
+              height: 25px;
+              color: #666;
+              padding: 5px;
+          }
+
+          /* Three bars (hamburger menu) */
+          .bar {
+              width: 17px;
+              height: 3px;
+              background-color: #aaa;
+              margin: 3px 0;
+              display: block;
+          }
+
+          /* Page content */
+          .content {
+              padding: 0px;
+              height: 100%;
+          }
+      </style>
+  </head>
+
+  <body>
+      <div class="container" style="height: 100%">
+          <div class="row">
+              <div class="column middle">
+                  <input type="text" value="http://localhost:7777" disabled>
               </div>
-          </body>
-      </html>
+              <div class="column right">
+                  <div style="float:right;color:black;cursor:pointer;" onclick="reloadBrowser()">RELOAD</div>
+              </div>
+          </div>
+
+          <div class="content" style="height: 100%">
+            <iframe src="http://localhost:7777" width="100%" height="100%" seamless frameborder=0></iframe>
+          </div>
+      </div>
+  </body>
+
+  <script>
+    function reloadBrowser(){
+      const vscode = acquireVsCodeApi();
+      vscode.postMessage({
+        command: 'reload',
+        text: 'Reload Framework7 Viewer'
+      });
+    }
+  </script>
+
+  </html>
   `;
 }
 //# sourceMappingURL=extension.js.map
