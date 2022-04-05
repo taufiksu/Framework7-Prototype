@@ -26,7 +26,11 @@
 			},
 			{
 				"command": "f7.BlankPageSingleLinux",
-				"title": "Framework7: New Project Single Page (Linux/Mac)"
+				"title": "Framework7: New Project Single Page (Linux)"
+			},
+			{
+				"command": "f7.BlankPageSingleMac",
+				"title": "Framework7: New Project Single Page (MacOS)"
 			},
 			{
 				"command": "f7.Preview",
