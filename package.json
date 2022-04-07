@@ -22,11 +22,11 @@
 		"commands": [
 			{
 				"command": "f7.BlankPageSingle",
-				"title": "Framework7: New Project Single Page (Windows)"
+				"title": "Framework7: New Project Single Page (Powershell)"
 			},
 			{
 				"command": "f7.BlankPageSingleLinux",
-				"title": "Framework7: New Project Single Page (Linux)"
+				"title": "Framework7: New Project Single Page (Wget)"
 			},
 			{
 				"command": "f7.Preview",
