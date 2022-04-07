@@ -29,10 +29,6 @@
 				"title": "Framework7: New Project Single Page (Linux)"
 			},
 			{
-				"command": "f7.BlankPageSingleMac",
-				"title": "Framework7: New Project Single Page (MacOS)"
-			},
-			{
 				"command": "f7.Preview",
 				"title": "Framework7: Open Preview in Panel"
 			},
