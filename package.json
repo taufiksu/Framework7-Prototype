@@ -15,7 +15,10 @@
 		"name": "T Sulaeman P"
 	},
 	"activationEvents": [
-		"*"
+		"onCommand:f7.BlankPageSingle",
+		"onCommand:f7.BlankPageSingleWget",
+		"onCommand:f7.Preview",
+		"onCommand:f7.PreviewBrowser"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -25,7 +28,7 @@
 				"title": "Framework7: New Project Single Page (Powershell)"
 			},
 			{
-				"command": "f7.BlankPageSingleLinux",
+				"command": "f7.BlankPageSingleWget",
 				"title": "Framework7: New Project Single Page (Wget)"
 			},
 			{

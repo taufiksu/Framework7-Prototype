@@ -7,7 +7,7 @@ function activate(context) {
         const terminal = vscode.window.createTerminal("F7 Installer", process.env.COMSPEC);
         terminal.show(true);
         // Donwload package.json
-        terminal.sendText('powershell -command "& { iwr https://gist.github.com/taufiksu/487d4ea119a53bbbf7572ebdc440938d/raw/c70ae88cec454ed377fc86252bbb7ff1ed8f801f/package.json -OutFile package.json }"', true);
+        terminal.sendText('powershell -command "& { iwr https://gist.github.com/taufiksu/487d4ea119a53bbbf7572ebdc440938d/raw/5069d46c9f5e0349720080473bb57b35f82ccbfb/package.json -OutFile package.json }"', true);
         // Get Framework7 Resouces
         terminal.sendText("npm install", true);
         // Clean
@@ -39,11 +39,11 @@ function activate(context) {
         // Close terminal
         terminal.sendText("exit", true);
     }));
-    context.subscriptions.push(vscode.commands.registerCommand("f7.BlankPageSingleLinux", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("f7.BlankPageSingleWget", () => {
         const terminal = vscode.window.createTerminal("F7 Installer", process.env.COMSPEC);
         terminal.show(true);
         // Donwload package.json
-        terminal.sendText("wget https://gist.github.com/taufiksu/487d4ea119a53bbbf7572ebdc440938d/raw/c70ae88cec454ed377fc86252bbb7ff1ed8f801f/package.json", true);
+        terminal.sendText("wget https://gist.githubusercontent.com/taufiksu/487d4ea119a53bbbf7572ebdc440938d/raw/5069d46c9f5e0349720080473bb57b35f82ccbfb/package.json", true);
         // Get Framework7 Resouces
         terminal.sendText("npm install", true);
         terminal.sendText("cd www", true);

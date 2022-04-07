@@ -11,7 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       // Donwload package.json
       terminal.sendText(
-        'powershell -command "& { iwr https://gist.github.com/taufiksu/487d4ea119a53bbbf7572ebdc440938d/raw/c70ae88cec454ed377fc86252bbb7ff1ed8f801f/package.json -OutFile package.json }"',
+        'powershell -command "& { iwr https://gist.github.com/taufiksu/487d4ea119a53bbbf7572ebdc440938d/raw/5069d46c9f5e0349720080473bb57b35f82ccbfb/package.json -OutFile package.json }"',
         true
       );
 
@@ -77,7 +77,7 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("f7.BlankPageSingleLinux", () => {
+    vscode.commands.registerCommand("f7.BlankPageSingleWget", () => {
       const terminal = vscode.window.createTerminal(
         "F7 Installer",
         process.env.COMSPEC
@@ -86,7 +86,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       // Donwload package.json
       terminal.sendText(
-        "wget https://gist.github.com/taufiksu/487d4ea119a53bbbf7572ebdc440938d/raw/c70ae88cec454ed377fc86252bbb7ff1ed8f801f/package.json",
+        "wget https://gist.githubusercontent.com/taufiksu/487d4ea119a53bbbf7572ebdc440938d/raw/5069d46c9f5e0349720080473bb57b35f82ccbfb/package.json",
         true
       );
 
