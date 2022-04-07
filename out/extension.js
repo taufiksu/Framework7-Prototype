@@ -46,16 +46,16 @@ function activate(context) {
         terminal.sendText("wget https://gist.github.com/taufiksu/487d4ea119a53bbbf7572ebdc440938d/raw/c70ae88cec454ed377fc86252bbb7ff1ed8f801f/package.json", true);
         // Get Framework7 Resouces
         terminal.sendText("npm install", true);
-        // Clean
-        terminal.sendText("rm package.json", true);
-        terminal.sendText("rm package-lock.json", true);
-        terminal.sendText("rm -r node_modules", true);
         terminal.sendText("cd www", true);
         terminal.sendText("mkdir framework7", true);
         terminal.sendText("mkdir fonts", true);
         terminal.sendText("mkdir css", true);
         terminal.sendText("mkdir js", true);
         terminal.sendText("mkdir pages", true);
+        // Clean
+        terminal.sendText("rm package.json", true);
+        terminal.sendText("rm package-lock.json", true);
+        terminal.sendText("rm -r node_modules", true);
         // Download Sample CSS
         terminal.sendText("cd css", true);
         terminal.sendText("wget https://gist.githubusercontent.com/taufiksu/4f99dad2448cd00a03a98fac0c0b2e04/raw/a9849bbad89ce1e9210ddf34c1c81219611de718/app.css", true);

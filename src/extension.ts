@@ -93,17 +93,17 @@ export function activate(context: vscode.ExtensionContext) {
       // Get Framework7 Resouces
       terminal.sendText("npm install", true);
 
-      // Clean
-      terminal.sendText("rm package.json", true);
-      terminal.sendText("rm package-lock.json", true);
-      terminal.sendText("rm -r node_modules", true);
-
       terminal.sendText("cd www", true);
       terminal.sendText("mkdir framework7", true);
       terminal.sendText("mkdir fonts", true);
       terminal.sendText("mkdir css", true);
       terminal.sendText("mkdir js", true);
       terminal.sendText("mkdir pages", true);
+
+      // Clean
+      terminal.sendText("rm package.json", true);
+      terminal.sendText("rm package-lock.json", true);
+      terminal.sendText("rm -r node_modules", true);
 
       // Download Sample CSS
       terminal.sendText("cd css", true);
